@@ -26,7 +26,7 @@ resource "aws_lightsail_instance" "instance" {
       "sudo apt-get update",
       "sudo apt-get install -y supervisor"
     ]
-  
+    }
 }
 
 # Libera portas
