@@ -10,10 +10,10 @@ terraform {
 	}
 }
 
-provider "aws" {
-	  region = "us-east-1"
-	  profile = "tf01"
-}
+#provider "aws" {
+#	  region = "us-east-1"
+#	  profile = "tf01"
+#}
 
 resource "aws_s3_bucket" "test-bucket" {
 	  bucket = "my-tf-test-bucket-kennedyrenkel"
