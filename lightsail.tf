@@ -28,7 +28,7 @@ resource "aws_lightsail_instance" "instance" {
     ]
     connection {
       user = "ubuntu"
-      key_file = "~/.ssh/LightsailDefaultKey-us-east-1.pem"
+      host_key = "~/.ssh/LightsailDefaultKey-us-east-1.pem"
     }
     }
 
