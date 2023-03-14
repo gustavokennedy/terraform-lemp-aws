@@ -23,6 +23,11 @@ git clone https://github.com/gustavokennedy/terraform.git
 cd terraform
 ```
 
+Delete o TF que não é necessário (S3, Lightsail...)
+```shell
+rm s3.tf
+```
+
 ### 2. Altere as variáveis
 
 ```shell
