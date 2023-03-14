@@ -21,3 +21,14 @@ resource "aws_lightsail_instance" "instance" {
     Environment = "Production"
   }
 }
+
+# Libera portas
+resource "aws_lightsail_instance_public_ports" "instance" {
+  instance_name = aws_lightsail_instance.instance.name
+
+  port_info {
+    protocol  = "tcp"
+    from_port = 3000
+    to_port   = 3000
+  }
+}
