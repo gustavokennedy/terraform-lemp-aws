@@ -29,6 +29,7 @@ resource "aws_lightsail_instance" "instance" {
     connection {
       user = "ubuntu"
       host_key = "~/.ssh/LightsailDefaultKey-us-east-1.pem"
+      host     = aws_lightsail_instance.instance.public_ip_address
     }
     }
 
