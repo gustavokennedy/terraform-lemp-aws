@@ -10,7 +10,7 @@ variable "instance_availability_zone" {
 
 variable "instance" {
   type    = string
-  default = "TerraformOC"
+  default = "InstanciaTerraform"
 }
 
 variable "instance_blueprintid" {
