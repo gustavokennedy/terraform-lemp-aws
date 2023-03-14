@@ -20,6 +20,13 @@ resource "aws_lightsail_instance" "instance" {
   tags = {
     Environment = "Production"
   }
+  
+    provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update",
+      "sudo apt-get install -y supervisor"
+    ]
+  
 }
 
 # Libera portas
@@ -61,11 +68,5 @@ resource "aws_lightsail_instance_public_ports" "instance" {
     from_port = 80
     to_port   = 80
   }
-  
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get update",
-      "sudo apt-get install -y supervisor"
-    ]
   
 }
