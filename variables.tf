@@ -20,6 +20,7 @@ variable "instance_blueprintid" {
 
 variable "instance_bundleid" {
   type    = string
-  default = "micro_2_0"
+  default = "micro_2_0" #1GBRAM
+  #default = "small_1_0" #2GBRAM
 }
 
