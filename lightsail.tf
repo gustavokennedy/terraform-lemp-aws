@@ -62,9 +62,10 @@ resource "aws_lightsail_instance_public_ports" "instance" {
     to_port   = 80
   }
   
-  provisioner "file" {
-    source      = "conf/setup.sh"
-    destination = "~/setup.sh"
-  }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update",
+      "sudo apt-get install -y supervisor"
+    ]
   
 }
