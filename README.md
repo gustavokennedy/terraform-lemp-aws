@@ -66,3 +66,7 @@ terraform init
 terraform plan
 terraform apply
 ```
+ou
+```shell
+terraform apply -var 'instance=NomeInstancia'
+```
