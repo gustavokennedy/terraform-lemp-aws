@@ -1,4 +1,4 @@
-# Aprendendo Terraform
+# Automating infrastructure setup with AWS Lightsail
 Repositório para estudos com Terraform.
 Scripts for automating infrastructure setup with AWS Lightsail.
 
