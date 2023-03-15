@@ -31,10 +31,6 @@ provider "cloudflare" {
   api_token = var.api_cloudflare
 }
 
-# Configuração do Provider do Nginx
-provider "nginx" {
-  # Configuration options
-}
 
 #################################################
 
@@ -67,16 +63,23 @@ provisioner "remote-exec" {
     ]
   }
 
-# Faz envio de arquivos	local da pasta files
+# Envia index padrão para Nginx
 provisioner "file" {
 	  source      = "files/index.nginx-debian.html"
 	  destination = "/tmp/index.nginx-debian.html"
 	}
+
+# Envia arquivo de configuração do bloco do Nginx	
+provisioner "file" {
+	  source      = "files/nginx.conf"
+	  destination = "/tmp/nginx.conf"
+	}	
 	
 # Faz envio de comandos - copia arquivos para sudo
 provisioner "remote-exec" {
     inline = [
-	"sudo cp /tmp/index.nginx-debian.html /var/www/html/${var.dominio}/"
+	"sudo cp /tmp/index.nginx-debian.html /var/www/html/${var.dominio}/",
+	"sudo cp /tmp/nginx.conf /etc/nginx/sites-enabled/${var.dominio}"
     ]
   }
 
@@ -136,23 +139,4 @@ resource "cloudflare_record" "www" {
   value   = aws_lightsail_instance.instance.public_ip_address
   type    = "A"
   proxied = false
-}
-
-# Configuração Nginx
-resource "nginx_server_block" "servidor" {
-  filename = "test.conf"
-  enable = true
-  content = <<EOF
-# Conteúdo
-server {
-    listen 80;
-    #listen 443 ssl default_server;
-
-    server_name var.dominio;
-
-    root /var/www/html/var.dominio;
-
-    index index.html index.htm index.php index.nginx-debian.html;
-}
-EOF
 }
