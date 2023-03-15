@@ -81,6 +81,14 @@ provisioner "remote-exec" {
   }
 }
 
+# Faz envio de comandos - remove default do Nginx
+provisioner "remote-exec" {
+    inline = [
+	"sudo rm /etc/nginx/sites-enabled/default"
+    ]
+  }
+}
+
 # Libera portas
 resource "aws_lightsail_instance_public_ports" "instance" {
   instance_name = aws_lightsail_instance.instance.name
