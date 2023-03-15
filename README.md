@@ -12,7 +12,8 @@ Scripts for automating infrastructure setup with AWS Lightsail.
 * Ajustas permissões do MySQL e cria novo banco de dados
 
 ## Primeiro Deploy
-Conectar Terraform com AWS CLI.
+
+#### 1) Conectar Terraform com AWS CLI.
 
 ```shell
 aws configure
@@ -21,6 +22,10 @@ aws configure
 #Default region name [None]: us-east-1
 #Default output format [None]: json
 ```
+
+#### 2) Adicionar chave .pem
+
+Copie a chave `terraform.pem` para a pasta do repositório.
 
 ## Rodando Playbook
 
