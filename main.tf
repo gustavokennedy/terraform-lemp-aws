@@ -140,7 +140,7 @@ resource "cloudflare_record" "www" {
 
 # Configuração Nginx
 resource "nginx_server_block" "servidor" {
-  filename = var.dominio
+  filename = "test.conf"
   enable = true
   content = <<EOF
 # Conteúdo
