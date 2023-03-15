@@ -79,7 +79,6 @@ provisioner "remote-exec" {
 	"sudo cp /tmp/index.nginx-debian.html /var/www/html/${var.dominio}/"
     ]
   }
-}
 
 # Faz envio de comandos - remove default do Nginx
 provisioner "remote-exec" {
