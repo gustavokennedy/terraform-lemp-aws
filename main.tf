@@ -79,7 +79,7 @@ provisioner "file" {
 provisioner "remote-exec" {
     inline = [
 	"sudo cp /tmp/index.nginx-debian.html /var/www/html/${var.dominio}/",
-	"sudo cp /tmp/nginx.conf /etc/nginx/sites-enabled/${var.dominio}"
+	"sudo cp /tmp/nginx.conf /etc/nginx/sites-enabled/${var.dominio}.conf"
     ]
   }
 
