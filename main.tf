@@ -68,7 +68,7 @@ provisioner "remote-exec" {
     inline = [
 	"sudo apt-add-repository ppa:ansible/ansible && sudo apt install ansible",
 	"sudo -i && sudo git clone https://github.com/gustavokennedy/ubuntu.git && cd ubuntu",
-	"ansible-playbook plabyook.yml --extra-vars 'dominio="var.dominio" letsencrypt_email=gustavo@overall.cloud db_nome=Teste"
+	"ansible-playbook plabyook.yml --extra-vars 'dominio=${var.dominio} letsencrypt_email=gustavo@overall.cloud db_nome=Teste'",
     ]
   }
 }	
