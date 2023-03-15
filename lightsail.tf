@@ -27,7 +27,7 @@ resource "aws_lightsail_instance" "instance" {
     type        = "ssh"
     user        = "ubuntu"
     private_key = file("terraform.pem")
-    host        = self.public_ip
+    host        = "self.public_ip"
   }
 
   provisioner "remote-exec" {
