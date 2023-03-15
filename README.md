@@ -58,7 +58,7 @@ variable "instance_availability_zone" {
 
 variable "instance" {
   type    = string
-  default = "TerraformOC"
+  default = "InstanciaTerraform"
 }
 
 variable "instance_blueprintid" {
@@ -70,6 +70,12 @@ variable "instance_bundleid" {
   type    = string
   default = "micro_2_0" #1GBRAM
   #default = "small_1_0" #2GBRAM
+}
+
+# Variáveis Setup
+variable "dominio" {
+  type    = string
+  default = "teste.overall.cloud"
 }
 ```
 
