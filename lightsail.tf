@@ -21,7 +21,7 @@ provider "aws" {
 }
 # Recebe API do Cloudflare
 provider "cloudflare" {
-  api_token = "${var.api_cloudflare}"
+  api_token = var.api_cloudflare
 }
 
 # Cria a instância na Lightsail com variáveis
