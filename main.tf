@@ -11,7 +11,11 @@ terraform {
     cloudflare = {
       source = "cloudflare/cloudflare"
       version = "~> 3.0"
-    }	  
+    }
+    nginx = {
+      source = "getstackhead/nginx"
+      version = "1.3.2"
+    }
   }
 }
 
@@ -25,6 +29,11 @@ provider "aws" {
 # Recebe API do Cloudflare
 provider "cloudflare" {
   api_token = var.api_cloudflare
+}
+
+# Configuração do Provider do Nginx
+provider "nginx" {
+  # Configuration options
 }
 
 #################################################
@@ -137,5 +146,6 @@ server {
     root /var/www/html/var.dominio;
 
     index index.html index.htm index.php index.nginx-debian.html;
+}
 EOF
 }
