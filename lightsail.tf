@@ -15,14 +15,19 @@ terraform {
   }
 }
 
+#################################################
+
 # Define região da AWS com variável
 provider "aws" {
   region                   = var.region
 }
+
 # Recebe API do Cloudflare
 provider "cloudflare" {
   api_token = var.api_cloudflare
 }
+
+#################################################
 
 # Cria a instância na Lightsail com variáveis
 resource "aws_lightsail_instance" "instance" {
@@ -109,10 +114,10 @@ resource "aws_lightsail_instance_public_ports" "instance" {
 }
 
 # Cloudflare - faz apontamento de DNS	
-resource "cloudflare_record" "www" {
+resource "cloudflare_record" "terraform" {
   zone_id = var.zone_id
-  name    = "www"
-  value   = "${aws_lightsail_instance.instance.public_ip_address}"
+  name    = "terraform"
+  value   = aws_lightsail_instance.instance.public_ip_address
   type    = "A"
   proxied = false
 }
