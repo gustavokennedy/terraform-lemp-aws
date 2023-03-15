@@ -33,7 +33,7 @@ resource "aws_lightsail_instance" "instance" {
   provisioner "remote-exec" {
     inline = [
       	"sudo apt-get -y install nginx",
-	"sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y"
+	"sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y",
       	"sudo systemctl start nginx"
     ]
   }	
