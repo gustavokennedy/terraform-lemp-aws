@@ -34,6 +34,7 @@ resource "aws_lightsail_instance" "instance" {
     inline = [
 	"sudo apt-get update",
 	"sudo apt-get -y install nginx",
+	"sudo mkdir /var/www/html/${var.dominio}",
 	"sudo systemctl start nginx"
     ]
   }	
