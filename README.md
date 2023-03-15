@@ -1,4 +1,3 @@
-# Automating infrastructure setup with AWS
 # Automatizar a configuração de infraestrutura na AWS
 
 PT-BR
@@ -16,6 +15,7 @@ Esse repositório foi criado para automatizar a configuração de infraestrutura
 * Cria cronjob para renovação do Certificado SSL
 * Ajustas permissões do MySQL e cria novo banco de dados
 
+# Automating infrastructure setup with AWS
 EN
 
 On a daily basis, we upload several machines to Overall.Cloud, sometimes with the same stack, such as React, NodeJS, Python or Laravel. For each server created we end up wasting a lot of time. Create an environment, release ports, connect to the server, install packages, Nginx, MySQL, SSL certificate, agents and everything else, in the end we ended up taking at least 3 hours, apart from possible errors.
@@ -151,3 +151,5 @@ terraform apply -var 'instance=' -var 'api_cloudflare=' -var 'dominio=' -var 'db
 ### Observação / Atention
 
 O comando `terraform plan` pode informar o erro <b>'Error: Authentication error (10000)'</b> porque não é informado a chave `api_cloudflare` correta no default.
+
+The `terraform plan` command may report the error <b>'Error: Authentication error (10000)'</b> because the correct `api_cloudflare` key is not provided by default.
