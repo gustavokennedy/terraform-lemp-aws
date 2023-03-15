@@ -17,6 +17,7 @@ resource "aws_lightsail_instance" "instance" {
   availability_zone = var.instance_availability_zone
   blueprint_id      = var.instance_blueprintid
   bundle_id         = var.instance_bundleid
+  key_pair_name     = "terraform"
   tags = {
     Environment = "Production"
   }
@@ -27,7 +28,7 @@ resource "aws_lightsail_instance" "instance" {
          connection {
             type        = "ssh"
             host        = "${self.public_ip_address}"
-            private_key = "${file("LightsailDefaultKey-us-east-1.pem")}"
+            private_key = "${file("terraform.pem")}"
             user        = "ubuntu"
             timeout     = "20s"
         }
