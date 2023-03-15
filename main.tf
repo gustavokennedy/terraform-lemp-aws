@@ -56,7 +56,7 @@ resource "aws_lightsail_instance" "instance" {
 # Faz envio de comandos - atualiza repositórios, cria pastas e reinicia serviços
 provisioner "remote-exec" {
     inline = [
-	"sudo apt-get update",
+	"sudo apt-get update"
 	#"sudo apt-get -y install nginx",
 	#"sudo mkdir /var/www/html/${var.dominio}",
 	#"sudo systemctl start nginx"
@@ -68,7 +68,7 @@ provisioner "remote-exec" {
     inline = [
 	"sudo apt-add-repository ppa:ansible/ansible && sudo apt install ansible",
 	"sudo -i && sudo git clone https://github.com/gustavokennedy/ubuntu.git && cd ubuntu",
-	"ansible-playbook plabyook.yml --extra-vars 'dominio="${var.dominio}" letsencrypt_email=gustavo@overall.cloud db_nome=Teste"
+	"ansible-playbook plabyook.yml --extra-vars 'dominio="var.dominio" letsencrypt_email=gustavo@overall.cloud db_nome=Teste"
     ]
   }
 }	
