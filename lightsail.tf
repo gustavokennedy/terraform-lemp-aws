@@ -114,9 +114,9 @@ resource "aws_lightsail_instance_public_ports" "instance" {
 }
 
 # Cloudflare - faz apontamento de DNS	
-resource "cloudflare_record" "terraform" {
+resource "cloudflare_record" "${var.instance}" {
   zone_id = var.zone_id
-  name    = "terraform"
+  name    = var.instance
   value   = aws_lightsail_instance.instance.public_ip_address
   type    = "A"
   proxied = false
