@@ -106,7 +106,8 @@ resource "aws_lightsail_instance_public_ports" "instance" {
     from_port = 80
     to_port   = 80
   }
-  
+}
+
 # Cloudflare - faz apontamento de DNS	
 resource "cloudflare_record" "www" {
   zone_id = var.zone_id
@@ -114,6 +115,4 @@ resource "cloudflare_record" "www" {
   value   = "${aws_lightsail_instance.instance.public_ip_address}"
   type    = "A"
   proxied = false
-}
-
 }
