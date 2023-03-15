@@ -30,7 +30,7 @@ resource "aws_lightsail_instance" "instance" {
     host        = aws_lightsail_instance.instance.public_ip_address
   }
 
-  provisioner "remote-exec" {
+provisioner "remote-exec" {
     inline = [
 	"sudo apt-get update",
 	"sudo apt-get -y install nginx",
@@ -39,10 +39,16 @@ resource "aws_lightsail_instance" "instance" {
     ]
   }
 	
-	provisioner "file" {
+provisioner "file" {
 	  source      = "files/index.nginx-debian.html"
-	  destination = "/var/www/html/${var.dominio}/index.nginx-debian.html"
+	  destination = "/tmp/index.nginx-debian.html"
 	}
+	
+provisioner "remote-exec" {
+    inline = [
+	"sudo cp /tmp/index.nginx-debian.html /var/www/html/${var.dominio}/"
+    ]
+  }
 }
 
 # Libera portas
