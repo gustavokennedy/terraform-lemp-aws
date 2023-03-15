@@ -133,7 +133,7 @@ resource "cloudflare_record" "www" {
 
 # Configuração Nginx
 resource "nginx_server_block" "servidor" {
-  filename = "${var.dominio}.conf"
+  filename = var.dominio
   enable = true
   content = <<EOF
 # Conteúdo
@@ -148,4 +148,12 @@ server {
     index index.html index.htm index.php index.nginx-debian.html;
 }
 EOF
+}
+
+# Remove arquivo default do Nginx
+provisioner "remote-exec" {
+    inline = [
+	"sudo rm /etc/nginx/sites-enabled/default"
+    ]
+  }
 }
