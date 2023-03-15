@@ -32,20 +32,20 @@ This repository was created to automate the infrastructure configuration of Over
 * Adjust MySQL permissions and create new database
 
 
-## Rodando Playbook
+## Rodando Playbook / Running Playbook
 
 Passos:
 
-### 1. Iniciando
+### 1. Iniciando / Starting
 ```shell
 git clone https://github.com/gustavokennedy/terraform.git
 cd terraform
 ```
 
-### Para primeiro deploy
+### Para primeiro deploy / For first deploy
 
 
-#### Conectar Terraform com AWS CLI.
+#### Conectar Terraform com AWS CLI. / Connect Terraform with AWS CLI
 
 ```shell
 aws configure
@@ -55,11 +55,11 @@ aws configure
 #Default output format [None]: json
 ```
 
-#### Adicionar chave .pem
+#### Adicionar chave .pem / Add .pem key
 
 Copie a chave `terraform.pem` para a pasta do repositório.
 
-### 2. Altere as variáveis
+### 2. Altere as variáveis / Change vars
 
 ```shell
 nano variables.tf
@@ -137,7 +137,7 @@ variable "porta_front" {
 
 ```
 
-### 3. Aplicando
+### 3. Aplicando / Apply
 
 ```shell
 terraform init
@@ -148,6 +148,6 @@ ou
 ```shell
 terraform apply -var 'instance=' -var 'api_cloudflare=' -var 'dominio=' -var 'db_nome='
 ```
-### Observação
+### Observação / Atention
 
 O comando `terraform plan` pode informar o erro <b>'Error: Authentication error (10000)'</b> porque não é informado a chave `api_cloudflare` correta no default.
