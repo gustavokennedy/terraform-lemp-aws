@@ -11,7 +11,7 @@ terraform {
     cloudflare = {
       source = "cloudflare/cloudflare"
       version = "~> 3.0"
-    }
+    }	  
   }
 }
 
@@ -120,4 +120,22 @@ resource "cloudflare_record" "www" {
   value   = aws_lightsail_instance.instance.public_ip_address
   type    = "A"
   proxied = false
+}
+
+# Configuração Nginx
+resource "nginx_server_block" "servidor" {
+  filename = "${var.dominio}.conf"
+  enable = true
+  content = <<EOF
+# Conteúdo
+server {
+    listen 80;
+    #listen 443 ssl default_server;
+
+    server_name var.dominio;
+
+    root /var/www/html/var.dominio;
+
+    index index.html index.htm index.php index.nginx-debian.html;
+EOF
 }
