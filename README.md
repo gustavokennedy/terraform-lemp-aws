@@ -83,10 +83,12 @@ variable "dominio" {
 variable "zone_id" {
   default = "bfc746a5a6141f5bfc8179270479e2b2"
 }
+
 variable "api_cloudflare" {
   type    = string
   default = ""
 }
+
 variable "domain" {
   default = "overall.cloud"
 }
@@ -102,5 +104,5 @@ terraform apply
 ```
 ou
 ```shell
-terraform apply -var 'instance=NomeInstancia' -var 'api_cloudflare='
+terraform apply -var 'instance=NomeInstancia' -var 'api_cloudflare=' -var 'dominio='
 ```
