@@ -15,6 +15,8 @@ Esse repositório foi criado para automatizar a configuração de infraestrutura
 * Cria cronjob para renovação do Certificado SSL
 * Ajustas permissões do MySQL e cria novo banco de dados
 
+[Repositório usado do Ansible](https://github.com/gustavokennedy/ubuntu)
+
 # Automating infrastructure setup with AWS
 EN
 
