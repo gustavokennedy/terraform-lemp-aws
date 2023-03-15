@@ -43,3 +43,24 @@ variable "api_cloudflare" {
 variable "domain" {
   default = "overall.cloud"
 }
+
+# Web
+variable "http_port" {
+  type    = string
+  default = "80"
+}
+
+variable "db_nome" {
+  type    = string
+  default = "teste"
+}
+
+variable "porta_api" {
+  type    = string
+  default = "3333"
+}
+
+variable "porta_front" {
+  type    = string
+  default = "3000"
+}
