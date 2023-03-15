@@ -1,3 +1,7 @@
+# Gustavo Kennedy Renkel
+# TF para criação de instância na Lightsail
+
+# Exige versão dos providers
 terraform {
   required_providers {
     aws = {
@@ -7,11 +11,12 @@ terraform {
   }
 }
 
+# Define região da AWS com variável
 provider "aws" {
   region                   = var.region
 }
 
-# Cria a instância na Lightsail
+# Cria a instância na Lightsail com variáveis
 resource "aws_lightsail_instance" "instance" {
   name              = var.instance
   availability_zone = var.instance_availability_zone
@@ -22,7 +27,7 @@ resource "aws_lightsail_instance" "instance" {
     Environment = "Production"
   }
 	
-# Conexão - Comandos e Transferências	
+# Faz conexão com instância criada por SSH (usuário ubuntu)	
   connection {
     type        = "ssh"
     user        = "ubuntu"
@@ -30,6 +35,7 @@ resource "aws_lightsail_instance" "instance" {
     host        = aws_lightsail_instance.instance.public_ip_address
   }
 
+# Faz envio de comandos - atualiza repositórios, cria pastas e reinicia serviços
 provisioner "remote-exec" {
     inline = [
 	"sudo apt-get update",
@@ -38,12 +44,14 @@ provisioner "remote-exec" {
 	"sudo systemctl start nginx"
     ]
   }
-	
+
+# Faz envio de arquivos	local da pasta files
 provisioner "file" {
 	  source      = "files/index.nginx-debian.html"
 	  destination = "/tmp/index.nginx-debian.html"
 	}
 	
+# Faz envio de comandos - copia arquivos para sudo
 provisioner "remote-exec" {
     inline = [
 	"sudo cp /tmp/index.nginx-debian.html /var/www/html/${var.dominio}/"
