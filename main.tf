@@ -149,7 +149,6 @@ server {
 }
 EOF
 }
-}
 
 # Remove arquivo default do Nginx
 provisioner "remote-exec" {
