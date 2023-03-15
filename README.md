@@ -11,22 +11,6 @@ Scripts for automating infrastructure setup with AWS Lightsail.
 * Cria cronjob para renovação do Certificado SSL
 * Ajustas permissões do MySQL e cria novo banco de dados
 
-## Primeiro Deploy
-
-#### 1) Conectar Terraform com AWS CLI.
-
-```shell
-aws configure
-#AWS Access Key ID [None]: 
-#AWS Secret Access Key [None]: 
-#Default region name [None]: us-east-1
-#Default output format [None]: json
-```
-
-#### 2) Adicionar chave .pem
-
-Copie a chave `terraform.pem` para a pasta do repositório.
-
 ## Rodando Playbook
 
 Passos:
@@ -36,6 +20,23 @@ Passos:
 git clone https://github.com/gustavokennedy/terraform.git
 cd terraform
 ```
+
+### Para primeiro deploy
+
+
+#### Conectar Terraform com AWS CLI.
+
+```shell
+aws configure
+#AWS Access Key ID [None]: 
+#AWS Secret Access Key [None]: 
+#Default region name [None]: us-east-1
+#Default output format [None]: json
+```
+
+#### Adicionar chave .pem
+
+Copie a chave `terraform.pem` para a pasta do repositório.
 
 ### 2. Altere as variáveis
 
