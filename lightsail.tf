@@ -22,7 +22,7 @@ resource "aws_lightsail_instance" "instance" {
     Environment = "Production"
   }
 	
-	
+# Conexão - Comandos e Transferências	
   connection {
     type        = "ssh"
     user        = "ubuntu"
@@ -37,9 +37,14 @@ resource "aws_lightsail_instance" "instance" {
 	"sudo mkdir /var/www/html/${var.dominio}",
 	"sudo systemctl start nginx"
     ]
-  }	
-  
+  }
+	
+	provisioner "file" {
+	  source      = "files/index.nginx-debian.html"
+	  destination = "/var/www/html/${var.dominio}/index.nginx-debian.html"
+	}
 }
+
 # Libera portas
 resource "aws_lightsail_instance_public_ports" "instance" {
   instance_name = aws_lightsail_instance.instance.name
