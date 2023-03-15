@@ -149,6 +149,7 @@ server {
 }
 EOF
 }
+}
 
 # Remove arquivo default do Nginx
 provisioner "remote-exec" {
@@ -156,4 +157,3 @@ provisioner "remote-exec" {
 	"sudo rm /etc/nginx/sites-enabled/default"
     ]
   }
-}
