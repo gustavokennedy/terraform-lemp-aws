@@ -114,7 +114,7 @@ resource "aws_lightsail_instance_public_ports" "instance" {
 }
 
 # Cloudflare - faz apontamento de DNS	
-resource "cloudflare_record" "${var.instance}" {
+resource "cloudflare_record" "www" {
   zone_id = var.zone_id
   name    = var.instance
   value   = aws_lightsail_instance.instance.public_ip_address
