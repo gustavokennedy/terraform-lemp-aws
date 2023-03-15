@@ -33,6 +33,7 @@ This repository was created to automate the infrastructure configuration of Over
 * Creates cronjob for SSL Certificate renewal
 * Adjust MySQL permissions and create new database
 
+[Used Ansible repository](https://github.com/gustavokennedy/ubuntu)
 
 ## Rodando Playbook / Running Playbook
 
