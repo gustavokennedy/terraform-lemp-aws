@@ -8,12 +8,20 @@ terraform {
       source  = "hashicorp/aws"
       version = "4.14.0"
     }
+    cloudflare = {
+      source = "cloudflare/cloudflare"
+      version = "~> 3.0"
+    }
   }
 }
 
 # Define região da AWS com variável
 provider "aws" {
   region                   = var.region
+}
+# Recebe API do Cloudflare
+provider "cloudflare" {
+  api_token = "${var.api_cloudflare}"
 }
 
 # Cria a instância na Lightsail com variáveis
@@ -99,4 +107,13 @@ resource "aws_lightsail_instance_public_ports" "instance" {
     to_port   = 80
   }
   
+# Cloudflare - faz apontamento de DNS	
+resource "cloudflare_record" "www" {
+  zone_id = var.zone_id
+  name    = "www"
+  value   = "${aws_lightsail_instance.instance.public_ip_address}"
+  type    = "A"
+  proxied = false
+}
+
 }
