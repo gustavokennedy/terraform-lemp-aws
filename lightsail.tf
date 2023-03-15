@@ -25,10 +25,11 @@ provisioner "file" {
          source = "file.service"
          destination = "/home/ubuntu"
          connection {
-            type = "ssh"
-            private_key =  "${file("LightsailDefaultKey-us-east-1.pem")}"
-            user = "ubuntu"
-            timeout = "20s"
+            type        = "ssh"
+            host        = "${self.public_ip_address}"
+            private_key = "${file("LightsailDefaultKey-us-east-1.pem")}"
+            user        = "ubuntu"
+            timeout     = "20s"
         }
   }
 }
