@@ -113,7 +113,7 @@ resource "aws_lightsail_instance_public_ports" "instance" {
   }
 }
 
-# Cloudflare - faz apontamento de DNS	
+# Cloudflare - cria registro de DNS com IP da instância	
 resource "cloudflare_record" "www" {
   zone_id = var.zone_id
   name    = var.instance
