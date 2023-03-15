@@ -37,7 +37,7 @@ variable "zone_id" {
 
 variable "api_cloudflare" {
   type    = string
-  default = ""
+  default = "d41d8cd98f00b204e9800998ecf8427e"
 }
 
 variable "domain" {
