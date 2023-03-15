@@ -108,4 +108,4 @@ terraform apply -var 'instance=NomeInstancia' -var 'api_cloudflare=' -var 'domin
 ```
 ### Observação
 
-O comando `terraform plan` pode informar o erro 'Error: Authentication error (10000)' porque não é informado a chave `aoi_cloudflaren` correta no default.
+O comando `terraform plan` pode informar o erro <b>'Error: Authentication error (10000)'</b> porque não é informado a chave `api_cloudflare` correta no default.
