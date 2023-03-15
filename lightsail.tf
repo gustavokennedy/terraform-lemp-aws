@@ -21,23 +21,23 @@ resource "aws_lightsail_instance" "instance" {
   tags = {
     Environment = "Production"
   }
-  
-  provisioner "file" {
-         source = "file.service"
-         destination = "/home/ubuntu"
-         connection {
-            type        = "ssh"
-            host        = "${self.public_ip_address}"
-            private_key = "${file("terraform.pem")}"
-            user        = "ubuntu"
-            timeout     = "20s"
-        }
+	
+	
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = file("terraform.pem")
+    host        = self.public_ip
   }
+
   provisioner "remote-exec" {
     inline = [
-	  "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y", "sudo apt-get install nginx -y", "sudo systemctl start nginx",
+      	"sudo apt-get -y install nginx",
+	"sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y"
+      	"sudo systemctl start nginx"
     ]
-  }
+  }	
+  
 }
 # Libera portas
 resource "aws_lightsail_instance_public_ports" "instance" {
