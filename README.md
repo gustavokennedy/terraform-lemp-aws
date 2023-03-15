@@ -2,6 +2,26 @@
 Repositório para automatizar deploy de aplicações na AWS Lightsail.
 Scripts for automating infrastructure setup with AWS Lightsail.
 
+* Cria uma instância na AWS Lightsail com as variáveis informadas
+* Faz liberação de portas padrão de aplicações web (HTTPS, MySQL, NodeJS, React...)
+* Atualiza o repositório APT da instância criada
+* Instala Nginx, PHP, MySQL, PphpMyAdmin Let's Encrypt, NodeJS, NPM, Zabbix-Agent
+* Configura blocos no Nginx
+* Configura Certificado SSL
+* Cria cronjob para renovação do Certificado SSL
+* Ajustas permissões do MySQL e cria novo banco de dados
+
+## Primeiro Deploy
+Conectar Terraform com AWS CLI.
+
+```shell
+aws configure
+#AWS Access Key ID [None]: 
+#AWS Secret Access Key [None]: 
+#Default region name [None]: us-east-1
+#Default output format [None]: json
+```
+
 ## Rodando Playbook
 
 Passos:
