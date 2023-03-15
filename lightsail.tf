@@ -31,7 +31,7 @@ provisioner "file" {
             timeout = "20s"
         }
   }
-
+}
 # Libera portas
 resource "aws_lightsail_instance_public_ports" "instance" {
   instance_name = aws_lightsail_instance.instance.name
