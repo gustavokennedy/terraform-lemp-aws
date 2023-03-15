@@ -57,39 +57,49 @@ resource "aws_lightsail_instance" "instance" {
 provisioner "remote-exec" {
     inline = [
 	"sudo apt-get update",
-	"sudo apt-get -y install nginx",
-	"sudo mkdir /var/www/html/${var.dominio}",
-	"sudo systemctl start nginx"
+	#"sudo apt-get -y install nginx",
+	#"sudo mkdir /var/www/html/${var.dominio}",
+	#"sudo systemctl start nginx"
     ]
   }
 
+# Faz envio de comandos - baixa repo para configuração
+provisioner "remote-exec" {
+    inline = [
+	"sudo apt-add-repository ppa:ansible/ansible && sudo apt install ansible",
+	"sudo -i && sudo git clone https://github.com/gustavokennedy/ubuntu.git && cd ubuntu",
+	"ansible-playbook plabyook.yml --extra-vars 'dominio="${var.dominio}" letsencrypt_email=gustavo@overall.cloud db_nome=Teste"
+    ]
+  }
+}	
+	
 # Envia index padrão para Nginx
-provisioner "file" {
-	  source      = "files/index.nginx-debian.html"
-	  destination = "/tmp/index.nginx-debian.html"
-	}
+#provisioner "file" {
+#	  source      = "files/index.nginx-debian.html"
+#	  destination = "/tmp/index.nginx-debian.html"
+#	}
 
 # Envia arquivo de configuração do bloco do Nginx	
-provisioner "file" {
-	  source      = "files/nginx.conf"
-	  destination = "/tmp/nginx.conf"
-	}	
+#provisioner "file" {
+#	  source      = "files/nginx.conf"
+#	  destination = "/tmp/nginx.conf"
+#	}	
 	
 # Faz envio de comandos - copia arquivos para sudo
-provisioner "remote-exec" {
-    inline = [
-	"sudo cp /tmp/index.nginx-debian.html /var/www/html/${var.dominio}/",
-	"sudo cp /tmp/nginx.conf /etc/nginx/sites-enabled/${var.dominio}.conf"
-    ]
-  }
+#provisioner "remote-exec" {
+#    inline = [
+#	"sudo cp /tmp/index.nginx-debian.html /var/www/html/${var.dominio}/",
+#	"sudo cp /tmp/nginx.conf /etc/nginx/sites-enabled/${var.dominio}.conf"
+#   ]
+#  }
 
 # Faz envio de comandos - remove default do Nginx
-provisioner "remote-exec" {
-    inline = [
-	"sudo rm /etc/nginx/sites-enabled/default"
-    ]
-  }
-}
+#provisioner "remote-exec" {
+#    inline = [
+#	"sudo rm /etc/nginx/sites-enabled/default"
+#    ]
+#  }
+#}
 
 # Libera portas
 resource "aws_lightsail_instance_public_ports" "instance" {
