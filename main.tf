@@ -149,10 +149,3 @@ server {
 }
 EOF
 }
-
-# Remove arquivo default do Nginx
-provisioner "remote-exec" {
-    inline = [
-	"sudo rm /etc/nginx/sites-enabled/default"
-    ]
-  }
