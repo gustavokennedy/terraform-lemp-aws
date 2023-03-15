@@ -89,5 +89,5 @@ terraform apply
 ```
 ou
 ```shell
-terraform apply -var 'instance=NomeInstancia'
+terraform apply -var 'instance=NomeInstancia' -var 'api_cloudflare='
 ```
