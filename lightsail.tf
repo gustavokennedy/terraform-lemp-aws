@@ -32,8 +32,9 @@ resource "aws_lightsail_instance" "instance" {
 
   provisioner "remote-exec" {
     inline = [
-      	"sudo apt-get -y install nginx",
-      	"sudo systemctl start nginx"
+	"sudo apt-get update",
+	"sudo apt-get -y install nginx",
+	"sudo systemctl start nginx"
     ]
   }	
   
