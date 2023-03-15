@@ -78,6 +78,19 @@ variable "dominio" {
   type    = string
   default = "teste.overall.cloud"
 }
+
+# Cloudflare
+variable "zone_id" {
+  default = "bfc746a5a6141f5bfc8179270479e2b2"
+}
+variable "api_cloudflare" {
+  type    = string
+  default = ""
+}
+variable "domain" {
+  default = "overall.cloud"
+}
+
 ```
 
 ### 3. Aplicando
