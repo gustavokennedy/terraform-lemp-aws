@@ -1,5 +1,5 @@
 # Automating infrastructure setup with AWS Lightsail
-Repositório para estudos com Terraform.
+Repositório para automatizar deploy de aplicações na AWS Lightsail.
 Scripts for automating infrastructure setup with AWS Lightsail.
 
 ## Rodando Playbook
