@@ -21,18 +21,25 @@ resource "aws_lightsail_instance" "instance" {
     Environment = "Production"
   }
   
-    provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get update",
-      "sudo apt-get install -y supervisor"
-    ]
-    connection {
-      user = "ubuntu"
-      host_key = "~/.ssh/LightsailDefaultKey-us-east-1.pem"
-      host     = aws_lightsail_instance.instance.public_ip_address
-    }
-    }
+  connection {
+      type     = "ssh"
+      user     = "ubuntu"
+      private_key = file("LightsailDefaultKey-us-east-1.pem")
+      #host = aws_lightsail_instance.instance.public_ip_address
+      host = self.public_ip
+  }
 
+  provisioner "local-exec" {
+    command = "touch devopsschool-local"
+  }
+  
+  provisioner "remote-exec" {
+    inline = [
+	  "sudo apt-get update",
+      "sudo apt-get install nginx -y",
+	  "sudo systemctl start nginx",
+    ]
+  }
 }
 
 # Libera portas
