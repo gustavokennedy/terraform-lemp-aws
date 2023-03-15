@@ -24,3 +24,8 @@ variable "instance_bundleid" {
   #default = "small_1_0" #2GBRAM
 }
 
+# Variáveis Setup
+variable "dominio" {
+  type    = string
+  default = "teste.overall.cloud"
+}
