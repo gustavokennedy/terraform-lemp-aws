@@ -26,7 +26,7 @@ resource "aws_lightsail_instance" "instance" {
       user     = "ubuntu"
       private_key = file("LightsailDefaultKey-us-east-1.pem")
       #host = aws_lightsail_instance.instance.public_ip_address
-      host = self.public_ip
+      host = "self.public_ip"
   }
 
   provisioner "local-exec" {
