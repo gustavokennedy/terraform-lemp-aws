@@ -66,7 +66,7 @@ provisioner "remote-exec" {
 # Faz envio de comandos - baixa repo para configuração
 provisioner "remote-exec" {
     inline = [
-	"sudo apt-add-repository ppa:ansible/ansible && sudo apt install ansible",
+	"sudo DEBIAN_FRONTEND=noninteractive apt-add-repository ppa:ansible/ansible -yq && sudo DEBIAN_FRONTEND=noninteractive apt-get install ansible -yq ",
 	"sudo -i && sudo git clone https://github.com/gustavokennedy/ubuntu.git && cd ubuntu",
 	"ansible-playbook plabyook.yml --extra-vars 'dominio=${var.dominio} letsencrypt_email=gustavo@overall.cloud db_nome=Teste'",
     ]
