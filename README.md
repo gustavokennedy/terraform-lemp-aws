@@ -86,11 +86,32 @@ variable "zone_id" {
 
 variable "api_cloudflare" {
   type    = string
-  default = ""
+  default = "d41d8cd98f00b204e9800998ecf8427ed41d8cd98f00b21d8cd98f00b2"
 }
 
 variable "domain" {
   default = "overall.cloud"
+}
+
+# Web (Ansible)
+variable "http_port" {
+  type    = string
+  default = "80"
+}
+
+variable "db_nome" {
+  type    = string
+  default = "teste"
+}
+
+variable "porta_api" {
+  type    = string
+  default = "3333"
+}
+
+variable "porta_front" {
+  type    = string
+  default = "3000"
 }
 
 ```
@@ -104,7 +125,7 @@ terraform apply
 ```
 ou
 ```shell
-terraform apply -var 'instance=NomeInstancia' -var 'api_cloudflare=' -var 'dominio='
+terraform apply -var 'instance=' -var 'api_cloudflare=' -var 'dominio=' -var 'db_nome='
 ```
 ### Observação
 
