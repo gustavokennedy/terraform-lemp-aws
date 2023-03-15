@@ -24,7 +24,7 @@ resource "aws_lightsail_instance" "instance" {
   connection {
       type     = "ssh"
       user     = "ubuntu"
-      private_key = file("LightsailDefaultKey-us-east-1.pem")
+      private_key = "${file("LightsailDefaultKey-us-east-1.pem")}
       #host = aws_lightsail_instance.instance.public_ip_address
       host = "self.public_ip"
   }
