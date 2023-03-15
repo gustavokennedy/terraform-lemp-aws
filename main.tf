@@ -104,41 +104,62 @@ provisioner "remote-exec" {
 resource "aws_lightsail_instance_public_ports" "instance" {
   instance_name = aws_lightsail_instance.instance.name
 
+# React - Frontend	
   port_info {
     protocol  = "tcp"
     from_port = 3000
     to_port   = 3000
   }
   
+# NodeJS - Backend	
     port_info {
     protocol  = "tcp"
     from_port = 3333
     to_port   = 3333
   }
   
+# MySQL	
     port_info {
     protocol  = "tcp"
     from_port = 3306
     to_port   = 3306
   }
   
+# SSH	
     port_info {
     protocol  = "tcp"
     from_port = 22
     to_port   = 22
   }
-
-  port_info {
-    protocol  = "tcp"
-    from_port = 443
-    to_port   = 443
-  }
   
+# HTTP	
     port_info {
     protocol  = "tcp"
     from_port = 80
     to_port   = 80
   }
+	
+# HTTPS	
+  port_info {
+    protocol  = "tcp"
+    from_port = 443
+    to_port   = 443
+  }
+
+# Zabbix-agent	
+  port_info {
+    protocol  = "tcp"
+    from_port = 10050
+    to_port   = 10050
+  }
+
+# Vite - Frontend	
+  port_info {
+    protocol  = "tcp"
+    from_port = 5173
+    to_port   = 5173
+  }
+
 }
 
 # Cloudflare - cria registro de DNS com IP da instância	
