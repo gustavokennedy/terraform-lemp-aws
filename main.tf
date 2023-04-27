@@ -1,5 +1,6 @@
 # Gustavo Kennedy Renkel
 # TF para criação de instância na Lightsail
+# Utilizaz repo do Ubuntu para configs
 
 # Exige versão dos providers
 terraform {
