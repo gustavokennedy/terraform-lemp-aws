@@ -9,7 +9,7 @@ Esse repositório foi criado para automatizar a configuração de infraestrutura
 * Cria uma instância na AWS Lightsail com as variáveis informadas
 * Faz liberação de portas padrão de aplicações web (HTTPS, MySQL, NodeJS, React...)
 * Atualiza o repositório APT da instância criada
-* Instala Nginx, PHP, MySQL, PphpMyAdmin Let's Encrypt, NodeJS, NPM, Zabbix-Agent
+* Instala Nginx, PHP, MySQL, PhpMyAdmin Let's Encrypt, NodeJS, NPM, Zabbix-Agent
 * Configura blocos no Nginx
 * Configura Certificado SSL
 * Cria cronjob para renovação do Certificado SSL
@@ -27,7 +27,7 @@ This repository was created to automate the infrastructure configuration of Over
 * Creates an instance in AWS Lightsail with the informed variables
 * Frees standard ports for web applications (HTTPS, MySQL, NodeJS, React...)
 * Updates the APT repository of the created instance
-* Installs Nginx, PHP, MySQL, PphpMyAdmin Let's Encrypt, NodeJS, NPM, Zabbix-Agent
+* Installs Nginx, PHP, MySQL, PhpMyAdmin Let's Encrypt, NodeJS, NPM, Zabbix-Agent
 * Configure blocks in Nginx
 * Configure SSL Certificate
 * Creates cronjob for SSL Certificate renewal
@@ -41,7 +41,7 @@ Passos:
 
 ### 1. Iniciando / Starting
 ```shell
-git clone https://github.com/gustavokennedy/terraform.git
+git clone https://github.com/gustavokennedy/terraform-lemp-aws.git
 cd terraform
 ```
 
